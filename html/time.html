@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>This is a time demo</h1>
+    <button onclick="stopTimer()">停止</button>
+    <button onclick="lazytime()">timeout</button>
+    <div id="time"></div>
+    <p>点击第一个按钮3S之后弹出</p>
+    <p>结束，在3S之内点击它</p>
+    <button onclick="lazytime()">点我</button>
+    <button onclick="clearLazyTime()">结束</button>
+    <script>
+    var id_time = document.getElementById("time");
+    var mytimer = setInterval(function(){gettime()},1000);
+    function gettime(){
+        var t = new Date();
+        var d = t.toLocaleTimeString();
+        id_time.innerHTML=d
+    }
+    function stopTimer(){
+        window.clearInterval(mytimer);
+    }
+    var mylazy
+    function lazytime(){
+     mylazy= window.setTimeout(function(){alert("hello!")},3000)
+    }
+    function clearLazyTime(){
+       clearTimeout(mylazy);
+    }
+    </script>
+</body>
+</html>
