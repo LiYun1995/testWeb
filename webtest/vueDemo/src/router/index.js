@@ -5,6 +5,7 @@ import FormBd from '@/components/formBd'
 import Fucie from '@/components/fucIE'
 import Editor from '@/components/Editor'
 import PostMovie from '@/components/postMovie'
+import testCookie from '@/components/testCookie'
 Vue.use(Router)
 
 export default new Router({
@@ -33,6 +34,10 @@ export default new Router({
         {
           path:'/HelloWorld/PostMovie',
           component:PostMovie
+        },
+        {
+          path:'/HelloWorld/testCookie',
+          component:testCookie
         }
       ]
     }

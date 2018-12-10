@@ -49,9 +49,14 @@
                   <el-menu-item index="2-1">
                     <router-link @click="handleScreen()" to="/HelloWorld/Editor">富文本编辑器</router-link>
                   </el-menu-item>
-                  <el-menu-item index="-2">
+                  <el-menu-item index="2-2">
                     <router-link to="/HelloWorld/PostMovie">
                       数据
+                    </router-link>
+                  </el-menu-item>
+                   <el-menu-item index="2-3">
+                    <router-link to="/HelloWorld/testCookie">
+                      测试Cookie
                     </router-link>
                   </el-menu-item>
                 </el-menu-item-group>
