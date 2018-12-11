@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var person = new Object();
+        person.name = 'LGG';
+        person.age = 23;
+        person.eyecolor = 'black';
+        document.write(person.name + 'is' + person.age + 'years old');
+
+        //替代语法
+        person = {
+            name:'LGG',
+            age:23,
+            eyecolor:'black'
+        }
+
+        //使用对象构造器
+        function animals(name,age,color){
+            this.name = name;
+            this.age = age;
+            this.color = color;
+
+            this.changeName = changeName;
+            function changeName(name){
+                this.name = name;
+                return this.name;
+            }
+        }
+        var myAnimal = new animals('dog',5,'black')
+        function forinAnimal(obj){
+            var txt = '';
+            for(x in obj){
+                txt = txt + obj[x];
+            }
+            console.log(txt);
+        }
+        document.write(myAnimal.name + ' is ' + myAnimal.age + ' years old');
+        console.log(myAnimal.changeName('cat'))
+        forinAnimal(myAnimal);
+    </script>
+</body>
+</html>

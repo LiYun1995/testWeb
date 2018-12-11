@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo"></div>
+    <script>
+        console.log(typeof "Jone");//string
+        console.log(typeof 123);//number    
+        console.log(typeof NaN);//number
+        console.log(typeof false);//boolean
+        console.log(typeof [1,2,3,4]);//object
+        console.log(typeof {name:"Jone",age:23});//object
+        console.log(typeof new Date());//object
+        console.log(typeof function(){});//function
+        console.log(typeof myCar);//undefined
+        console.log(typeof null);//object
+        console.log(typeof undefined);//undefined
+
+        console.log("Jone".constructor);// 返回函数 String()  { [native code] }
+        console.log(3.14.constructor);// 返回函数 Number()  { [native code] }
+        console.log(false.constructor);// 返回函数 Boolean() { [native code] }
+        console.log([1,2,3,4].constructor);// 返回函数 Array()   { [native code] }
+        console.log({name:"Jone",age:23}.constructor);// 返回函数 Object()  { [native code] }
+        console.log(new Date().constructor);// 返回函数 Date()    { [native code] }
+        console.log(function(){}.constructor);// 返回函数 Function(){ [native code] }
+
+        //可以使用 constructor 属性来查看对象是否为数组 (包含字符串 "Array"):
+        function isArray(myArray){
+            return myArray.constructor.toString().indexOf("Array") > -1;
+        }
+        console.log(isArray([1,2,3,4]));
+        console.log(isArray(1));
+        
+        //一元运算符，如果y不能转换为数字则是NaN
+        var y = "Jone"
+        var x = +y;
+        console.log(x);
+
+        var d = new Date();
+       console.log(Number(d)) ;
+
+       var myVar;
+       myVar = {name:"LY",age:23};
+       document.getElementById("demo").innerHTML = myVar;//toString 转换为 "[object Object]"
+       myVar = [1,2,3,4];
+       document.getElementById("demo").innerHTML = myVar;// toString 转换为 "1,2,3,4"
+       myVar = new Date();
+       document.getElementById("demo").innerHTML = myVar;// toString 转换为 "Tue Dec 11 2018 10:27:37 GMT+0800 (中国标准时间)"
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Function构造函数
+        var myFunction = new Function('a','b','return a+b');
+        var x = myFunction(3,4);
+        console.log(x);
+        //函数提升
+        hoistFunction(5,5)
+        function hoistFunction(a,b){
+            return a+b;
+        }
+        //使用表达式定义函数时不能提升
+        
+        //匿名自我调用函数
+        (function(){
+            alert("我调用我自己")
+        })()
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <p>触底加载</p>
+    <script>
+        function getScrollTop(){
+            var scrollTop = 0;
+            if(document.documentElement && document.documentElement.scrollTop){
+                scrollTop = document.documentElement.scrollTop;
+            }else if(document.body){
+                scrollTop = document.body.scrollTop;
+            }
+            return scrollTop;
+        }
+
+        function getClientHeight(){
+            var clientHeight = 0;
+            if(document.body.clientHeight && document.documentElement.clientHeight){
+                clientHeight = Math.min(document.body.clientHeight,document.documentElement.clientHeight);
+            }else{
+                clientHeight = Math.max(document.body.clientHeight,document.documentElement.clientHeight);
+            }
+            return clientHeight;
+        }
+
+        function getScrollHeight(){
+            return Math.max(document.body.scrollHeight,document.documentElement.scrollHeight);
+        }
+
+        window.onscroll = function(){
+            if(getScrollTop() + getClientHeight() == getScrollHeight()){
+                console.log("触底加载")
+                var article = document.createElement("BUTTON");
+                document.body.appendChild(article);
+            }
+        }
+    </script>
+</body>
+</html>

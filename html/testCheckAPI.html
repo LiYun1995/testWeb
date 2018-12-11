@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input  type="number" id="demo" min="100" max="300" required>
+    <button onclick="myFunction()">验证</button>
+    <p id="showDemo"></p>
+    <input type="number" id="demo2" max="300" min="100">
+    <button onclick="myFunction2()">验证</button>
+    <p id="showDemo2"></p>
+    
+    <script>
+        function myFunction(){
+            var inpObj = document.getElementById("demo");
+            if(inpObj.checkValidity() == false){
+                document.getElementById("showDemo").innerHTML=inpObj.validationMessage;
+            }
+        }
+       function myFunction2(){
+           var txt = '';
+           var inpObj2 = document.getElementById("demo2");
+           if(!isNumeric(inpObj2.value)){
+               txt = "你输入的不是数字"
+           }
+           else if(inpObj2.validity.rangeOverflow){
+               txt = "你输入的值太大啦";
+           }else if(inpObj2.validity.rangeUnderflow){
+               txt = "你输入的值太小啦"
+           }else{
+            txt = "输入正确"
+           }
+           inpObj2.innerHTML = txt;
+       }
+       function isNumeric(n){
+           return !isNaN(parseFloat(n)) && isFinite(n);
+       }
+    </script>
+</body>
+</html>
