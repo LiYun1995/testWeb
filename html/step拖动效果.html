@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            width: 100%;
+            height: 900px;
+        }
+        .step-top{
+            width: 100%;
+            height: 50px;
+            position: relative;
+            top: 0px;
+            background: red;
+        }
+        .step-left{
+            width: 15%;
+            height: 100%;
+            position: relative;
+            /* background: blue; */
+            float: left;
+        }
+        .step-right{
+            width: 85%;
+            height: 100%;
+            /* background: green; */
+            float: right;
+            position: relative;
+        }
+        .main-container{
+            display: inline-block;
+            width: 80%;
+            height: 90%;
+            border: 1px solid black;
+            margin: 30px auto;
+            position: relative;
+        }
+        .nav-ul{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="step-top">top</div>
+    <div class="step-left">
+        <input type="text" id="addstepTxt" placeholder="请输入步骤...">
+        <button id="addstep">添加</button>
+        <ul id="nav-ul">
+            <li>文本框 <button id="movebtn" onmousedown="creatTools(window.event,'input')">拖动</button></li>
+            <li>按钮 <button id="movebtn2" onmousedown="creatTools(window.event,'button')">拖动</button></li>
+        </ul>
+    </div>
+    <div class="step-right">
+        <div class="main-container">
+            <div id="testmove" onmouseover="moveAction(this)" style="width:100px;height:100px;background: blue;position:absolute">拖动div</div>
+       </div>
+   </div>
+
+    <script>
+        function moveAction(id){
+        var moveBox = id;
+        var windowH = window.innerHeight,
+            windowW = window.innerWidth;
+        
+        moveBox.onmousedown = function(event){
+            event = event || window.event;
+            var distanceX = event.clientX - this.offsetLeft,
+                distanceY = event.clientY - this.offsetTop;
+              
+            document.onmousemove = function(event_2){
+                event_2 = event_2 || window.event;
+                var left = event_2.clientX - distanceX,
+                    top = event_2.clientY - distanceY;
+                if (left < 0) left = 0;
+                if (top < 0) top = 0;
+                if (left > windowW - moveBox.offsetWidth) left = windowW - moveBox.offsetWidth;
+                if (top > windowH - moveBox.offsetHeight) top = windowH - moveBox.offsetHeight;
+                moveBox.style.left = left + 'px';
+                moveBox.style.top = top + 'px'
+            
+                document.onmouseup = function(){
+                document.onmousemove = null;
+                document.onmouseup = null;
+            }
+        }
+      }
+    }
+            var add_btn = document.getElementById("addstep");
+            add_btn.addEventListener('click',addStep);
+            var move_btn = document.getElementById("movebtn");
+            var nav_ul = document.getElementById("nav-ul");
+            function addStep(){
+                var text = document.getElementById('addstepTxt').value
+                var new_li = document.createElement('li');
+                new_li.innerText= text
+                nav_ul.appendChild(new_li);
+            }
+
+    function creatTools(e,name){
+            e = e || window.event;
+            var creat_btn = document.createElement(name);
+            creat_btn.innerHTML = "按钮点击"
+            var left = e.clientX;
+            // console.log(left);
+            var top = e.clientY;
+            creat_btn.style.position = "absolute";
+            creat_btn.style.top = top - 10 + 'px';
+            creat_btn.style.left = left -10 + 'px';
+            creat_btn.style.opacity = 0.5;
+            document.body.appendChild(creat_btn);
+
+            document.onmousemove = function(e){
+                e = e || window.event;
+                var move_left = e.clientX;
+                var move_top = e.clientY;
+                console.log(move_left);
+                console.log(move_top);
+                creat_btn.style.top = move_top + 'px';
+                creat_btn.style.left = move_left + 'px';
+            }
+
+            document.onmouseup = function(){
+                creat_btn.style.opacity = 1;
+                document.onmousemove = null;
+                document.onmouseup = null;
+            }
+    }
+    
+    </script>
+</body>
+</html>

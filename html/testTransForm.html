@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        @keyframes myfirst{
+            from{transform: none}
+            to{transform: rotateX(180deg)}
+        }
+        @keyframes myfirst2{
+            from{transform: rotateX(180deg)}
+            to{transform:none }
+        }
+        #div1{
+            width: 100px;
+            height: 100px;
+            animation: myfirst 5s, myfirst2 5s;
+            animation-iteration-count:infinite;
+            background: yellow;
+            margin: 20px auto;
+            transform: rotateX(120deg);
+            -webkit-transform: rotateX(120deg)
+        }
+        #div2{
+            width: 100px;
+            height: 100px;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">This is a Demo</div>
+    <div id="div2">This is a Normal</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body onload="checkCookie()">
+    <h1 onclick="changeTxt(this)">hello</h1>
+    <p>当你离开输入框后，函数将被触发，将小写字母转为大写字母</p>
+    <input type="text" id="txt" onchange="handleChange(this)">
+    <div style="width:100px;height:50px;background:red" onmouseover="onMo(this)" onmouseout="onMout(this)" onmousedown="onMd(this)" onmouseup="onMu(this)">鼠标移上来</div>
+    <button id="btn">Click</button>
+    <script>
+        function changeTxt(id){
+            id.innerHTML = 'hello world';
+        }
+        
+        function checkCookie(){
+            if(navigator.cookieEnabled==true){
+                alert('cookie可以用！')
+            }else{
+                alert('cookie不可用！')
+            }
+        }
+
+        function handleChange(id){
+            id.value = id.value.toUpperCase();
+        }
+
+        function onMo(id){
+            id.innerHTML = "hello";
+        }
+
+        function onMout(id){
+            id.innerHTML = "鼠标移上来"
+        }
+
+        function onMd(id){
+            id.style.background = "blue";
+        }
+
+        function onMu(id){
+            id.style.background = "red";
+        }
+        document.getElementById("btn").addEventListener('click',function(){alert('yes')})
+        document.getElementById("btn").addEventListener('click',function(){alert('nope')})
+        document.getElementById("btn").addEventListener('mouseover',function(){alert('mouseover')})
+        document.getElementById("btn").addEventListener('mouseout',function(){alert('mouseout')})
+    </script>
+</body>
+</html>

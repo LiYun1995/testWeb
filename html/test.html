@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="handleChange()">click</button>
+    <p>你好 LYGG</p>
+    <script>
+        function myFunction(firstName,lastName){
+            this.firstName=firstName;
+            this.lastName=lastName;
+            return this;
+        }
+        //调用构造函数实例化对象
+        var test = new myFunction('ly','lygg')
+        console.log(test);
+
+        var myObj,myArray;
+        function testCall(a,b){
+            return a*b;
+        }
+        myObj = testCall.call(myObj,10,2);
+        console.log(myObj);
+        myArray=[10,2];
+        myObj = testCall.apply(myObj,myArray);
+        console.log(myObj);
+
+        var  str = "hello world!"
+        console.log(str.match('world!'));
+        console.log(str.match('World!'));
+        console.log(str.match('world'));
+        document.write(str.match('world!'))
+        
+        function handleChange(){
+            var text = document.getElementsByTagName('p')[0].innerHTML;
+            var str = text.replace("LYGG","mawaer");
+            document.getElementsByTagName('p')[0].innerHTML = str;
+        }
+    </script>
+</body>
+</html>
