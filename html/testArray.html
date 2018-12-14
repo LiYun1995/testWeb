@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <p>点击按钮检测数组的所有元素是否都大于 18 :</p>
+        <button onclick="t_every()">检测</button>
+        <p id="t_every"></p>
+
+        <p>点击按钮使用 “Runoob” 填充所有数组元素。</p>
+        <button onclick="t_fill()">点我</button>
+        <p id="t_fill"></p>
+
+        <p>点击按钮获取数组中大于 18 的所有元素。</p>
+        <button onclick="t_filter()">点我</button>
+        <p id="t_filter"></p>
+
+        <p>点击按钮获取数组中年龄大于 18 的第一个元素。</p>
+        <button onclick="t_find()">点我</button>
+        <p id="t_find"></p>
+
+        <p>点击按钮获取数组中年龄大于 18 的第一个元素索引位置。</p>
+        <button onclick="t_findIndex()">点我</button>
+        <p id="t_findIndex"></p>
+
+        <p>点击按钮列出数组的每个元素。</p>
+        <button onclick="e_forEach.forEach(t_forEach)">点我</button>
+        <p id="t_forEach"></p>
+    <script>
+
+        //concat
+        var t_concat1 = [1,2,3,4];
+        var t_concat2 = ['name','pass','lygg'];
+        var t_concat = t_concat1.concat(t_concat2);
+        document.write("concat(),合并后"+t_concat+"<br>");
+
+        //copyWithin()
+        var t_copy = ['lygg','lgg','mawaer'];
+        var t_copy1 = t_copy.copyWithin(2,0);
+        document.write("copyWithin(),复制后："+t_copy1+"<br>");
+
+        //entries() 方法返回一个数组的迭代对象，该对象包含数组的键值对 (key/value)。迭代对象中数组的索引值作为 key， 数组元素作为 value。
+        var t_entries = ['lygg','lgg','mawaer'];
+        var t_entries1 = t_entries.entries();
+        // console.log(t_entries1);
+        document.write("entries()返回数组的迭代对象："+t_entries1+"  :"+t_entries1.next().value+t_entries1.next().value+t_entries1.next().value);
+
+        //every() 方法用于检测数组所有元素是否都符合指定条件（通过函数提供）。
+        //every() 方法使用指定函数检测数组中的所有元素：
+        //如果数组中检测到有一个元素不满足，则整个表达式返回 false ，且剩余的元素不会再进行检测。
+        //如果所有元素都满足条件，则返回 true。
+        //注意： every() 不会对空数组进行检测。
+        //注意： every() 不会改变原始数组。
+
+        var e_every = [22,18,19,20,11];
+        function checkAdult(num){
+            return num>=18;
+        }
+        function t_every(){
+            document.getElementById("t_every").innerHTML = e_every.every(checkAdult);
+        }
+
+        //fill() 方法用于将一个固定值替换数组的元素。
+
+        var e_fill = ['lygg','lgg','mawaer'];
+        document.getElementById("t_fill").innerHTML = e_fill;
+        
+        function t_fill(){
+            e_fill.fill('LYGG');
+            document.getElementById('t_fill').innerHTML = e_fill;
+        }
+
+        //filter() 方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素。
+        //注意： filter() 不会对空数组进行检测。
+        //注意： filter() 不会改变原始数组。
+
+        var e_filter = [33,22,19,55,11];
+        function checkAdult2(age){
+            return age>=18;
+        }
+
+        function t_filter(){
+            document.getElementById("t_filter").innerHTML = e_filter.filter(checkAdult2);
+        }
+
+       //find() 方法返回通过测试（函数内判断）的数组的第一个元素的值。
+       //find() 方法为数组中的每个元素都调用一次函数执行：
+       //当数组中的元素在测试条件时返回 true 时, find() 返回符合条件的元素，之后的值不会再调用执行函数。
+       //如果没有符合条件的元素返回 undefined
+       //注意: find() 对于空数组，函数是不会执行的。
+       //注意: find() 并没有改变数组的原始值。
+
+       var e_find = [33,22,19,55,11];
+       function t_find(){
+           document.getElementById("t_find").innerHTML = e_find.find(checkAdult2);
+       }
+
+       //findIndex() 方法返回传入一个测试条件（函数）符合条件的数组第一个元素位置。
+       //findIndex() 方法为数组中的每个元素都调用一次函数执行：
+       //当数组中的元素在测试条件时返回 true 时, findIndex() 返回符合条件的元素的索引位置，之后的值不会再调用执行函数。
+       //如果没有符合条件的元素返回 -1
+       //注意: findIndex() 对于空数组，函数是不会执行的。
+       //注意: findIndex() 并没有改变数组的原始值。
+
+       var e_findIndex = [33,22,19,55,11];
+       function t_findIndex(){
+           document.getElementById("t_findIndex").innerHTML = e_findIndex.findIndex(checkAdult2);
+       }
+
+       //forEach() 方法用于调用数组的每个元素，并将元素传递给回调函数。
+       //注意: forEach() 对于空数组是不会执行回调函数的。
+
+       var e_forEach = [33,22,19,55,11];
+       function t_forEach(item,index){
+           var t_FE = document.getElementById("t_forEach");
+           t_FE.innerHTML = t_FE.innerHTML + "index[" + index + "] "+":"+item+"<br>";
+       }
+    </script>
+</body>
+</html>
