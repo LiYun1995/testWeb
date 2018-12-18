@@ -16,6 +16,7 @@
     <el-button @click="checkCookie()">cookie</el-button>
     <el-button @click="deleteCookie()">清除cookie</el-button>
   </el-form-item>
+  <formBD></formBD>
 </el-form>
 <h1>Hello{{numberValidateForm.age}}</h1>
 </el-card>

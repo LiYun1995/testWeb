@@ -30,6 +30,46 @@
         <p>点击按钮列出数组的每个元素。</p>
         <button onclick="e_forEach.forEach(t_forEach)">点我</button>
         <p id="t_forEach"></p>
+
+        <h1>Array.from()</h1>
+        <p>从字符串中生成一个数组:</p>
+        <p id="t_from"></p>
+​           
+
+
+        <p id="t_indexOf">单击按钮显示“苹果”的位置：</p>
+        <button onclick="t_indexOf()">点我</button>
+
+        <p>点击按钮检测 "fruits" 变量是否为一个数组。</p>
+        <button onclick="t_isArray()">点我</button>
+        <p id="t_isArray"></p>
+
+        <p id="t_join">点击按钮将数组作为字符串输出。</p>
+        <button onclick="t_join()">点我</button>
+
+        <p>从数组中创建一个可迭代的对象，该对象包含数组的键。</p>
+        <p id="t_keys1"></p>
+        <p id="t_keys2"></p>
+        <p id="t_keys3"></p>
+        <button onclick="t_keys()">点我</button>
+        <p><strong>注意:</strong> IE11 及其更早的浏览器版本不支持 keys 方法。</p>
+
+        <p id="t_lastIndexOf">单击按钮显示“苹果”最后一次出现的位置：</p>
+        <button onclick="t_lastIndexOf()">点我</button>
+
+        <p>点击按钮获取数组元素的平方根。</p>
+        <button onclick="t_map()">点我</button>
+        <p id="t_map"></p>
+
+        <p id="t_pop">单击按钮删除数组的最后一个元素。</p>
+        <button onclick="t_pop()">点我</button>
+
+        <p id="t_push">单击按钮给数组添加新的元素。</p>
+        <button onclick="t_push()">点我</button>
+
+        <p>点击按钮计算数组元素相加后的总和。</p>
+        <button onclick="t_reduce()">点我</button>
+        <p>数组元素总和: <span id="t_reduce"></span></p>
     <script>
 
         //concat
@@ -119,6 +159,106 @@
            var t_FE = document.getElementById("t_forEach");
            t_FE.innerHTML = t_FE.innerHTML + "index[" + index + "] "+":"+item+"<br>";
        }
+
+      // from() 方法用于通过拥有 length 属性的对象或可迭代的对象来返回一个数组。
+      //如果对象是数组返回 true，否则返回 false。
+
+      var e_from = Array.from('LYGG');
+      if(e_from instanceof Array){
+          document.getElementById('t_from').innerHTML = e_from[0]
+      }else{
+          document.getElementById('t_from').innerHTML = "改对象不是数组！"
+      }
+
+      //includes() 方法用来判断一个数组是否包含一个指定的值，如果是返回 true，否则false。
+
+      var e_includes = ['LYGG','LGG','MAWAER'];
+
+      console.log('e_includes为:'+e_includes+" baidu属于它吗？"+e_includes.includes('baidu'));
+
+      //indexOf() 方法可返回数组中某个指定的元素位置。
+      //该方法将从头到尾地检索数组，看它是否含有对应的元素。开始检索的位置在数组 start 处或数组的开头（没有指定 start 参数时）。如果找到一个 item，则返回 item 的第一次出现的位置。开始位置的索引为 0。
+      //如果在数组中没找到指定元素则返回 -1。
+      //提示如果想查找字符串最后出现的位置，使用 lastIndexOf() 方法。
+
+      function t_indexOf(){
+           var fruits = ["香蕉", "橙子", "苹果", "甜瓜"];
+           var a = fruits.indexOf('苹果'); 
+           document.getElementById('t_indexOf').innerHTML = a;
+      }
+
+      //isArray() 方法用于判断一个对象是否为数组。
+      //如果对象是数组返回 true，否则返回 false。
+
+      function t_isArray(){
+          var fruits = ["Banana", "Orange", "Apple", "Mango"];
+          document.getElementById('t_isArray').innerHTML = Array.isArray(fruits);
+      }
+
+      //join() 方法用于把数组中的所有元素转换一个字符串。
+      //元素是通过指定的分隔符进行分隔的。
+
+      function t_join(){
+        var fruits = ["Banana", "Orange", "Apple", "Mango"];
+        document.getElementById('t_join').innerHTML = fruits.join('|');
+      }
+
+     // keys() 方法用于从数组创建一个包含数组键的可迭代对象。
+     //如果对象是数组返回 true，否则返回 false。
+
+     function t_keys(){
+        var fruits = ["Banana", "Orange", "Apple", "Mango"];
+        var e_keys = fruits.keys();
+        document.getElementById('t_keys1').innerHTML = e_keys.next().value;
+        document.getElementById('t_keys2').innerHTML = e_keys.next().value;
+        document.getElementById('t_keys3').innerHTML = e_keys.next().value;
+     }
+
+        //lastIndexOf() 方法可返回一个指定的元素在数组中最后出现的位置，在一个数组中的指定位置从后向前搜索。
+        //如果要检索的元素没有出现，则该方法返回 -1。
+        //该方法将从尾到头地检索数组中指定元素 item。开始检索的位置在数组的 start 处或数组的结尾（没有指定 start 参数时）。如果找到一个 item，则返回 item 从尾向前检索第一个次出现在数组的位置。数组的索引开始位置是从 0 开始的。
+        //如果在数组中没找到指定元素则返回 -1。
+        //如果查找数组首次出现的位置，使用 indexOf() 方法。
+
+        function t_lastIndexOf(){
+            var fruits = ["香蕉", "橙子", "苹果", "甜瓜"];
+            document.getElementById('t_lastIndexOf').innerHTML = fruits.lastIndexOf('苹果');
+        }
+
+        //map() 方法返回一个新数组，数组中的元素为原始数组元素调用函数处理后的值。
+        //map() 方法按照原始数组元素顺序依次处理元素。
+        //注意： map() 不会对空数组进行检测。
+        //注意： map() 不会改变原始数组。
+
+        function t_map(){
+            var e_map = [4,9,16,25];
+            document.getElementById('t_map').innerHTML = e_map.map(Math.sqrt);
+        }
+
+        //pop() 方法用于删除数组的最后一个元素并返回删除的元素。
+        //注意：此方法改变数组的长度！
+        //移除数组第一个元素，使用shift() 方法。
+
+        var e_pop = ["香蕉", "橙子", "苹果", "甜瓜"];
+        function t_pop(){
+            e_pop.pop();
+            document.getElementById('t_pop').innerHTML = e_pop;
+        }
+
+        //push() 方法可向数组的末尾添加一个或多个元素，并返回新的长度。
+        //注意：新元素将添加在数组的末尾。
+        //注意：此方法改变数组的长度。
+        //提示：在数组起始位置添加元素使用 unshift() 方法。
+        var e_push = ["香蕉", "橙子", "苹果", "甜瓜"];
+        function t_push(){
+            var x = document.getElementById('t_push');
+            e_push.push('新水果');
+            x.innerHTML = e_push;
+        }
+
+        //reduce()方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值。
+        //reduce()可以作为一个高阶函数，用于函数的 compose。
+        //注意:reduce() 对于空数组是不会执行回调函数的。
     </script>
 </body>
 </html>
