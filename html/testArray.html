@@ -92,6 +92,16 @@
 
         <p id="t_splice">点击按钮向数组添加元素。</p>
         <button onclick="t_splice()">点我</button>
+
+        <p id="t_toString">点击按钮将数组转为字符串并返回。</p>
+        <button onclick="t_toString()">点我</button>
+
+        <p id="t_unshift">单击按钮在数组中插入元素。</p>
+        <button onclick="t_unshift()">点我</button>
+        <p><b>注意:</b> unshift()方法不能用于 Internet Explorer 8 之前的版本，插入的值将被返回成<em> undefined </em>。</p>
+
+        <p id="t_valueof">单击按钮返回数组。</p>
+        <button onclick="t_valueof()">点我</button>
     <script>
 
         //concat
@@ -374,6 +384,37 @@
 
         function t_splice(){
             var e_splice = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+            e_splice.splice(2,0,"what","a","nice","day");
+            document.getElementById("t_splice").innerHTML = e_splice;
+        }
+
+        //toString() 方法可把数组转换为字符串，并返回结果。
+        //注意： 数组中的元素之间用逗号分隔。
+
+        function t_toString(){
+            var e_toString = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+            var e_toString2 = e_toString.toString();
+            document.getElementById("t_toString").innerHTML = e_toString2;
+        }
+
+        // unshift() 方法可向数组的开头添加一个或更多元素，并返回新的长度。
+        // 注意： 该方法将改变数组的数目。
+        // 提示: 将新项添加到数组末尾，请使用 push() 方法。
+
+        function t_unshift(){
+            var e_unshift =  ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+            e_unshift.unshift("nice","LYGG");
+            document.getElementById("t_unshift").innerHTML = e_unshift;
+        }
+
+        // valueOf() 方法返回 Array 对象的原始值。
+        //该原始值由 Array 对象派生的所有对象继承。
+        //valueOf() 方法通常由 JavaScript 在后台自动调用，并不显式地出现在代码中。
+        //注意： valueOf() 方法不会改变原数组。
+
+        function t_valueof(){
+            var e_valueof =  ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+            document.getElementById("t_valueof").innerHTML = e_valueof.valueOf();
         }
     </script>
 </body>
