@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+    //创建组件
+        // function HelloLY(props){
+        //     return (
+        //         <h1>Hello LY</h1>
+        //     );
+        // };
+        // ReactDOM.render(<HelloLY />,document.getElementById('example'));
+
+    //es6 class创建组件
+    //注意，原生 HTML 元素名以小写字母开头，而自定义的 React 类名以大写字母开头，比如 HelloMessage 不能写成 helloMessage。除此之外还需要注意组件类只能包含一个顶层标签，否则也会报错。
+        class HelloLY extends React.Component{
+            render(){
+                //注意，在添加属性时， class 属性需要写成 className ，for 属性需要写成 htmlFor ，这是因为 class 和 for 是 JavaScript 的保留字。
+                return <h1>Hello {this.props.date}</h1>
+            }
+        }
+
+        ReactDOM.render(<HelloLY date={"LYGG"} />,document.getElementById('example'));
+    </script>
+</body>
+</html>

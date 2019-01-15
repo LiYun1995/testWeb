@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        //可以通过创建多个组件来合成一个组件，即把组件的不同功能点进行分离。
+        function Name(props){
+            return <h1>姓名:{props.name}</h1>
+        }
+
+        function Clock(props){
+            return <h1>现在是：{props.date.toLocaleTimeString()}</h1>
+        }
+        function Sex(props){
+            return <h1>性别:{props.sex}</h1>
+        }
+
+        function Age(props){
+            return <h1>年龄:{props.age}</h1>
+        }
+
+        function App(props){
+            return (
+                <div>
+                    <Name name={'LY'} />
+                    <Sex sex={'man'} />
+                    <Age age={23} />
+                    <Clock date={new Date()} />
+                </div>
+            )
+        }
+        
+        function tick(){
+            ReactDOM.render(<App />,document.getElementById('example'));
+        }
+        
+        setInterval(tick,1000);
+    </script>
+</body>
+</html>
