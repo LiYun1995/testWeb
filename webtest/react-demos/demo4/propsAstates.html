@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        class App extends React.Component{
+            constructor(){
+                super();
+                this.state = {name:'LYGG',sex:'man',age:23};
+            }
+
+            render(){
+                return (
+                    <div>
+                    <Name name={this.state.name} />
+                    <Sex sex={this.state.sex}/>
+                    <Age age={this.state.age}/>
+                    </div>
+                )
+            }
+        }
+
+        class Name extends React.Component{
+            render(){
+                return <h1>名字：{this.props.name}</h1>
+            }
+        }
+
+        class Sex extends React.Component{
+            render(){
+                return <h1>性别：{this.props.sex}</h1>
+            }
+        }
+
+        class Age extends React.Component{
+            render(){
+                return <h1>年龄：{this.props.age}</h1>
+            }
+        }
+
+        ReactDOM.render(<App />,document.getElementById('example'));
+    </script>
+</body>
+</html>
