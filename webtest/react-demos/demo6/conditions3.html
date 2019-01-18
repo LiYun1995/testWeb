@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+    <style>
+        .warncon{
+            width: 100%;
+            height: 50px;
+            background: red;
+            color: aliceblue;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        class Warn extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {isWarn:false};
+                this.handleToggle = this.handleToggle.bind(this);
+            }
+
+            handleToggle(){
+                this.setState(pre => ({isWarn:!pre.isWarn}));
+            }
+
+            render(){
+                return (
+                    <div>
+                    <Warncon isWarn={this.state.isWarn} />
+                    <button onClick={this.handleToggle}>
+                        {this.state.isWarn ? '隐藏' : '显示'}
+                    </button>
+                    </div>
+                )
+            }
+        }
+
+        function Warncon(props){
+            if(!props.isWarn){
+                return null;
+            }else{
+                return (
+                    <div className='warncon'>
+                        警告！
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<Warn />,document.getElementById('example'));
+    </script>
+</body>
+</html>

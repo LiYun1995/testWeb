@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        function ShowMessage(props){
+            const mMessage = props.mMessage;
+            return  (
+                <div>
+                    <h1>Hello LYGG</h1>
+                    {mMessage.length > 0 && 
+                        <h2>你有{mMessage.length}条消息</h2>
+                    }
+                </div>
+            )
+        }
+
+        class ThreeCond extends React.Component{
+            constructor (props){
+                super(props);
+                this.state = {isTrue:false};
+                this.handleToggle = this.handleToggle.bind(this);
+            }
+            handleToggle(){
+                this.setState(mas => ({isTrue:!mas.isTrue}));
+            }
+            render(){
+                const isTrue = this.state.isTrue;
+                return (
+                    <div>
+                        {isTrue ? (<ShowMessage mMessage={testArr} />) :
+                                  (<ShowMessage mMessage={testArr2} />)
+                        }
+                        <button onClick={this.handleToggle}>Toggle</button>
+                    </div>
+                )
+            }
+        }
+        const testArr = ['1','2','3'];
+        const testArr2 = ['1','2','3','4','5'];
+        ReactDOM.render(<ThreeCond />,document.getElementById('example'));
+    </script>
+</body>
+</html>

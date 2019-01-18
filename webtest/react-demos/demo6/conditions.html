@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+         class NameContent extends React.Component{
+            constructor(props){
+                super(props); 
+                this.handleL = this.handleL.bind(this);
+                this.handleM = this.handleM.bind(this);
+                this.state = {isWho:false};
+            }
+
+            handleL(){
+                this.setState({isWho:true});
+            }
+
+            handleM(){
+                this.setState({isWho:false});
+            }
+
+             render(){
+                const isWho = this.state.isWho;
+                 let button;
+
+                if(isWho){
+                    button = <Lbutton onClick={this.handleM} />;
+                }else{
+                    button = <Mbutton onClick={this.handleL} />;
+                }
+
+                return (
+                    <div>
+                    <ShowN isWho={isWho}/>
+                    {button}
+                    </div>
+                );
+            }
+         }
+
+        
+        function Lshow(props) {
+            return <h1>Hello LYGG</h1>
+        }
+
+        function Mshow(props) {
+            return <h1>Hello Mawaer</h1>
+        }
+
+        function ShowN(props) {
+            const isWho = props.isWho;
+                if (isWho) {
+                    return <Lshow />;
+                }else{
+                    return <Mshow />;
+                }
+        }
+
+        function Lbutton(props){
+            return (
+                <button onClick={props.onClick}>
+                LYGG
+                </button>
+            );
+        }
+
+        function Mbutton(props){
+            return (
+                <button onClick={props.onClick}>
+                Mawaer
+                </button>
+            );
+        }
+        ReactDOM.render(<NameContent />,document.getElementById('example'));
+    </script>
+</body>
+</html>
