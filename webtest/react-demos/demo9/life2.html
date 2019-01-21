@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        class Button extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {count:0};
+                this.handleCounter = this.handleCounter.bind(this);
+            }
+            handleCounter(){
+                this.setState({count:this.state.count+1});
+            }
+            render(){
+                return (
+                    <div>
+                        <button onClick={this.handleCounter}>increase</button>
+                        <Info myinfo={this.state.count}></Info>
+                    </div>
+                );
+            }
+        }
+
+        class Info extends React.Component{
+            componentWillMount() {
+                console.log("componentWillMount!");
+            }
+            componentDidMount() {
+                console.log("componentDidMount!");
+            }
+            componentWillReceiveProps() {
+                console.log("componentWillReceiveProps!");
+            }
+            shouldComponentUpdate() {
+                return true;
+            }
+            componentWillUpdate() {
+                console.log("componentWillUpdate!");
+            }
+            componentDidUpdate() {
+                console.log("componentDidUpdate!");
+            }
+            componentWillUnmount() {
+                console.log("componentWillUnmount!")
+            }
+
+            render() {
+                return (
+                    <div>
+                        <h1>{this.props.myinfo}</h1>
+                    </div>
+                );  
+            }
+        }
+
+        ReactDOM.render(
+            <div>
+            <Button />
+            </div>,
+            document.getElementById('example'));
+    </script>
+</body>
+</html>

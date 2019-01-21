@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        class TestAjax extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {username:'',userurl:''};
+            }
+
+            componentDidMount(){
+                this.request = $.get(this.props.requestUrl,function(data){
+                    console.log(data);
+                    var lastGis = data[0];
+                    this.setState({
+                        username:lastGis.owner.login,
+                        userurl:lastGis.html_url
+                    });
+                }.bind(this));
+            }
+
+            componentWillUnmount(){
+                this.request.abort();
+            }
+            render(){
+                return (
+                    <div>
+                        <h1>{this.state.username}用户最新的gist共享地址：<a href={this.state.userurl}>{this.state.userurl}</a></h1>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<TestAjax requestUrl={'https://api.github.com/users/octocat/gists'} />,document.getElementById('example'));
+    </script>
+</body>
+</html>
