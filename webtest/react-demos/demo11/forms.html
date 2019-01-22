@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        class Forms extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    isGoing : true ,
+                    numberOfGuess : 2
+                }
+                this.handleCheck = this.handleCheck.bind(this);
+            }
+
+            handleCheck(e) {
+                const target = e.target;
+                const value = target.type === 'checkbox' ? target.checked : target.value;
+                const name = target.name;
+
+                this.setState({
+                    [name]:value
+                });
+            }
+
+            render() {
+                return (
+                    <form>
+                        <lable>
+                            是否离开
+                            <input
+                             name='isGoing'
+                             type='checkbox'
+                             checked={this.state.isGoing}
+                             onChange={this.handleCheck} />
+                            
+                        </lable>
+                        <br />
+                        <lable>
+                            访客数：
+                            <input
+                             name='numberOfGuess'
+                             type='text'
+                             value={this.state.numberOfGuess}
+                             onChange={this.handleCheck} />
+                        </lable>
+                        <h2>{this.state.numberOfGuess}</h2>
+                    </form>
+                );
+            }
+        }
+
+        ReactDOM.render(<Forms />,document.getElementById('example'));
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        class App extends React.Component{
+            handleClick(){
+                // 使用原生的 DOM API 获取焦点
+                this.refs.myInput.focus();
+            }
+
+            render() {
+                 //  当组件插入到 DOM 后，ref 属性添加一个组件的引用于到 this.refs
+                return (
+                    <div>
+                        <input 
+                            type='text'
+                            ref='myInput' />
+                        <input type='button' onClick={this.handleClick.bind(this)} value='点我获取焦点' />
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(<App />,document.getElementById('example'));
+    </script>
+</body>
+</html>

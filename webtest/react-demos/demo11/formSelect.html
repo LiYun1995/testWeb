@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        class ShowName extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {myValue : "value"};
+                this.handleChange = this.handleChange.bind(this);
+                this.handleAlert = this.handleAlert.bind(this);
+            }
+            handleChange(e){
+                this.setState({myValue : e.target.value});
+            }
+            handleAlert(e){
+                alert("This Is :" + this.state.myValue);
+                e.preventDefault();
+            }
+            render(){
+                return (
+                    <form onSubmit={this.handleAlert}>
+                        <label>
+                        选择你的名字
+                        <select value={this.state.myValue} onChange={this.handleChange}>
+                            <option value='LYGG'>LYGG</option>
+                            <option value='LGG'>LGG</option>
+                            <option value='MAWAER'>MAWAER</option>
+                        </select>
+                        </label>
+                        <input type='submit' value='提交' />
+                    </form>
+                )
+            }
+        }
+
+        ReactDOM.render(<ShowName />,document.getElementById('example'));
+    </script>
+</body>
+</html>
