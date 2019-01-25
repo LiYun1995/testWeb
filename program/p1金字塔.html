@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="text-align:center">打印倒正金字塔直线</h1>
+    <script>
+        var length=100;
+        var n_length=120;
+
+        var length2=25;
+        var n_length2=175;
+        for (var i=0;i<7;i++){
+            for(var x=0;x<n_length;x++){
+                document.write("&nbsp")
+            }
+            for(var j=0;j<length;j++){
+                document.write("_");
+            }
+            document.write("<br/>")
+            length-=15;
+            n_length+=11;
+        }
+
+        for (var i=0;i<6;i++){
+            for(var x=0;x<n_length2;x++){
+                document.write("&nbsp")
+            }
+            for(var j=0;j<length2;j++){
+                document.write("_");
+            }
+            document.write("<br/>")
+            length2+=15;
+            n_length2-=11;
+            if(length2>100){
+                break;
+            }
+            
+        }
+
+        //answer
+
+//         var n=window.prompt("输入打印金字塔的行数");  
+
+//         for(var i=0;i<=n;i++){     
+
+//             for(var j=i;j<=n-1;j++){
+
+//         document.write("______");  
+
+//  }
+
+//          document.write("<br/>");
+
+//    }         for(var i=0;i<=n;i++){     
+
+//     for(var j=0;j<=i-1;j++){
+
+//         document.write("______");
+
+//   }
+
+//          document.write("<br/>");
+
+//    }
+    </script>
+</body>
+</html>
