@@ -20,9 +20,21 @@
         //使用表达式定义函数时不能提升
         
         //匿名自我调用函数
-        (function(){
-            alert("我调用我自己")
-        })()
+        // (function(){
+        //     alert("我调用我自己")
+        // })()
+
+        //访问参数
+
+        function testCS(){
+            if(arguments.length===1){
+                console.log(arguments[0]+10)
+            }else if(arguments.length===2){
+                console.log(arguments[0]+arguments[1]);
+            }
+        }
+        testCS(10);
+        testCS('hello',1);
     </script>
 </body>
 </html>
