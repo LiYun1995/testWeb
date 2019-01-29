@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="mycanvas" width="200" height="100" style="border:1px solid black">
+        你的浏览器不支持canvas
+    </canvas>
+
+    <canvas id="mycanvas2" width="200" height="100" style="border:1px solid black">
+        something alert
+    </canvas>
+
+    <canvas id="mycanvas3" width="200" height="100" style="border:1px solid black">
+            something alert
+    </canvas>
+    <script>
+        var c = document.getElementById("mycanvas");
+        var ctx = c.getContext("2d");
+
+        var grd = ctx.createLinearGradient(0,0,200,0);
+        grd.addColorStop(0,"red");
+        grd.addColorStop(1,"white");
+
+        ctx.fillStyle = grd;
+        ctx.fillRect (0,0,150,75);
+        ctx.moveTo(0,0);
+        ctx.lineTo(200,100);
+        ctx.stroke();
+
+        var c1 = document.getElementById("mycanvas2");
+        var ctx1 = c1.getContext("2d");
+        ctx1.beginPath();
+        ctx1.arc(95,50,40,0,2*Math.PI);
+        ctx1.stroke();
+
+        var c2 = document.getElementById("mycanvas3");
+        var ctx2 = c2.getContext("2d");
+        ctx2.font = "30px Arial";
+        ctx2.fillText("Hello LYGG",10,50);
+        ctx2.strokeText("Hello LYGG",10,80);
+    </script>
+</body>
+</html>
