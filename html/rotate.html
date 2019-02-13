@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .main {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #adadad;
+            transition: all 0.1s;
+            border-radius: 50%;
+            background: url(eg_dragdrop_w3school.gif) no-repeat center center;
+            margin: 400px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        
+    </div>
+
+    <script>
+        window.onload = function(){
+            var myrotate = document.getElementsByClassName("main")[0];
+        setCss3(myrotate,{transform:"rotate(10deg)","transform-origin":"50% 50%"});
+
+        var angle = 0;
+
+        setInterval(function(){
+            angle+=1;
+            setCss3(myrotate,{transform:"rotate("+angle+"deg)","transform-origin":"0 0"})
+        },10)
+
+        function setCss3(obj,objAttr){
+            for (var i in objAttr){
+                var newi = i;
+                if (newi.indexOf("-")>0){
+                    var num = newi.indexOf("-");
+                    newi = newi.replace(newi.substr(num,2),newi.substr(num+1,1).toUpperCase());
+                }
+
+                obj.style[newi]=objAttr[i];
+                newi=newi.replace(newi.charAt(0),newi.charAt(0).toUpperCase());
+                obj.style[newi]=objAttr[i];
+              
+            }
+        }
+        }
+        
+    </script>
+</body>
+</html>
