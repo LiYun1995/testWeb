@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-       .solarsys{
+  .solarsys{
   width: 800px;
   height: 800px;;
   position: relative;
@@ -27,6 +27,8 @@
   box-shadow: 5px 5px 10px rgb(248,107,35), -5px -5px 10px rgb(248,107,35), 5px -5px 10px rgb(248,107,35), -5px 5px 10px rgb(248,107,35);
   position: absolute;
   margin: 0;
+  z-index: 9999;
+  transform: scale(1);
 }
 
 /*水星*/
@@ -288,6 +290,15 @@
   }
 }
 
+@keyframes betterLook {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(2);
+  }
+}
+
         
     </style>
 </head>
@@ -328,5 +339,16 @@
         <!-- 海王星 -->
         <div class="neptune"></div>
     </div>
+
+    <script>
+      window.onload = function(){
+        var myDom = document.getElementsByClassName("sun")[0];
+        myDom.addEventListener("click",function(){
+            console.log(this);
+            this.setAttribute("style","animation:betterLook 0.1s linear forwards");
+      })
+      }
+     
+    </script>
 </body>
 </html>
