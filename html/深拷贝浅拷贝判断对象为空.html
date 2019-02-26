@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //test 浅拷贝
+        let a= [0,1,2,3,4,5]
+        b=a;
+        console.log(a===b);
+        a[0]=1;
+        console.log(a,b);
+
+        //实现深拷贝
+
+        function deepCopy(obj){
+            let _obj = JSON.stringify(obj),
+                copy_obj = JSON.parse(_obj);
+                return copy_obj;
+        }
+
+        let c = [0,1,2,3,4,5]
+        d=deepCopy(c);
+        console.log(c===d);
+        c[0]=2;
+        console.log(c,d);
+
+        //判断一个对象是否为空
+        //1.用JSON.stringify
+        let test_obj = {};
+        let test_obj_str = JSON.stringify(test_obj);
+        console.log(test_obj_str==="{}");
+
+        //2.for in 判断
+        var test_obj_f = function(){
+            for (let item in test_obj){
+                return false;
+            }
+            return true;
+        }
+
+        console.log(test_obj_f());
+
+        //3.JQuery的$.isEmptyObject方法
+        //let test_obj_jq = $.isEmptyObject(test_obj);
+        //console.log(test_obj_jq);
+
+        //3.使用Object.getOwnPropertyNames方法,如果获取的数组对象length为0则为空对象
+        let test_obj_ise = Object.getOwnPropertyNames(test_obj);
+        console.log(test_obj_ise);
+        console.log(test_obj_ise.length);
+
+        //使用ES6的Object.keys()方法,如果获取的数组对象length为0则为空对象
+        let test_obj_es6 = Object.keys(test_obj);
+        console.log(test_obj_es6);
+        console.log(test_obj_es6.length);
+    </script>
+</body>
+</html>
